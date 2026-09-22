@@ -79,7 +79,16 @@ const libros = [
     anio: 1915,
     genero: 'Novela',
     disponible: true
+  },
+  {
+    id: 11,
+    titulo: "El Bosque de los susurros",
+    autor: "Juan Oscar",
+    anio: 1933 ,
+    genero: "Ficcion", 
+    disponible: true
   }
+
 ];
 
 const usuarios = [
@@ -100,8 +109,14 @@ const usuarios = [
     nombre: 'Carlos García',
     email: 'carlos.garcia@example.com',
     librosPrestados: 0
+  },
+  {
+    id: 4,
+    nombre: 'Cesar Guitierrez',
+    email: 'CesarGuitierrez@gmail.com',
+    librosPrestados: 5
   }
 ];
-console.log(`===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`)
-
-
+console.log(
+  `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir\n`
+);
