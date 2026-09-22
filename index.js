@@ -102,3 +102,6 @@ const usuarios = [
     librosPrestados: 0
   }
 ];
+console.log(`===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`)
+
+
