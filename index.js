@@ -166,9 +166,7 @@ main();
 function mostrarLibros(libros) {
   console.log('MOSTRANDO LIBROS DISPONIBLES EN LA BIBLIOTECA');
 
-  libros.forEach(function (libro) {
-    console.table(libro);
-  });
+  console.table(libros);
 }
 function buscarLibro(libros) {
   console.log('Buscando libro...');
