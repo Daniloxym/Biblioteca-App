@@ -138,7 +138,7 @@ function main() {
       break;
 
     case 3:
-      registrarUsuario(libros);
+      registrarUsuario(usuarios);
       break;
 
     case 4:
@@ -146,7 +146,7 @@ function main() {
       break;
 
     case 5:
-      mostrarLibrosDisponibles(libros);
+      devolverLibro(libros);
       break;
 
     case 6:
@@ -154,7 +154,17 @@ function main() {
       break;
 
     case 7:
+      mostrarLibrosPrestados(libros);
+      break;
+    case 8:
       mostrarEstadisticas(libros);
+      break;
+
+    case 9:
+      return;
+
+    default:
+      alert('Opcion no valida');
       break;
   }
 }
@@ -169,7 +179,19 @@ function mostrarLibros(libros) {
   console.table(libros);
 }
 function buscarLibro(libros) {
-  console.log('Buscando libro...');
+  const titulo = prompt('Digite el nombre del libro que desea buscar:').toLowerCase();
+
+  const libroEncontrado = libros.find(function (libro) {
+    return titulo === libro.titulo.toLowerCase();
+  });
+
+  if (!libroEncontrado) {
+    console.log('El libro no está disponible');
+    return;
+  }
+
+  console.log(`El libro llamado ${titulo} se encuentra disponible`);
+  console.log(libroEncontrado);
 }
 function registrarUsuario(usuarios) {}
 function prestarLibro(libros) {}
