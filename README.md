@@ -47,7 +47,7 @@ Contiene:
 Como no necesita dependencias ni servidor, basta con abrir el archivo HTML en un navegador:
 
 1. Descarga o clona este repositorio
-2. Abre `/home/runner/work/Biblioteca-App/Biblioteca-App/index.html` en tu navegador
+2. Abre el archivo `index.html` en tu navegador
 3. Interactúa con el menú emergente
 4. Revisa la consola del navegador para ver los resultados
 
@@ -104,4 +104,3 @@ Toda la información vive en memoria, por lo que no se guarda al recargar la pá
 - Validar mejor la entrada del usuario
 - Añadir una interfaz gráfica en el DOM
 - Incorporar almacenamiento local o backend para persistencia
-
