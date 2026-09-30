@@ -186,14 +186,33 @@ function buscarLibro(libros) {
   });
 
   if (!libroEncontrado) {
-    console.log('El libro no está disponible');
+    console.log(`El libro llamado ${titulo} no se encuentra disponible`);
     return;
   }
 
   console.log(`El libro llamado ${titulo} se encuentra disponible`);
-  console.log(libroEncontrado);
+  console.table(libroEncontrado);
 }
-function registrarUsuario(usuarios) {}
+
+function registrarUsuario(usuarios) {
+  const nombre = prompt('Digite el nombre del usuario:');
+
+  const email = prompt('Digite el correo electronico del usuario: ');
+
+  const usuario = {
+    id: usuarios.length + 1,
+    nombre,
+    email,
+    librosPrestados: 0
+  };
+
+  usuarios.push(usuario);
+
+  //Mostrar usuarios
+
+  console.log('USUARIOS REGISTRADOS: ');
+  console.log(usuarios);
+}
 function prestarLibro(libros) {}
 function devolverLibro(libros) {}
 function mostrarLibrosDisponibles(libros) {}
