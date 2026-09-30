@@ -197,6 +197,21 @@ function buscarLibro(libros) {
 function registrarUsuario(usuarios) {
   const nombre = prompt('Digite el nombre del usuario:');
 
+  if (!nombre) {
+    alert('Debe ingresar un nombre para el usuario');
+    return;
+  }
+
+  if (nombre.length < 3) {
+    alert('El nombre del usuario debe tener al menos 3 caracteres');
+    return;
+  }
+
+  if (nombre.length > 50) {
+    alert('El nombre del usuario no debe exceder los 50 caracteres');
+    return;
+  }
+
   const email = prompt('Digite el correo electronico del usuario: ');
 
   const usuario = {
