@@ -94,79 +94,85 @@ function main() {
   const usuarios = [
     {
       id: 1,
-      nombre: 'Juan Pérez',
+      nombre: 'Juan Perez',
       email: 'juan.perez@example.com',
-      librosPrestados: 2
+      librosPrestados: []
     },
     {
       id: 2,
-      nombre: 'María López',
+      nombre: 'Maria Lopez',
       email: 'maria.lopez@example.com',
-      librosPrestados: 1
+      librosPrestados: []
     },
     {
       id: 3,
       nombre: 'Carlos García',
       email: 'carlos.garcia@example.com',
-      librosPrestados: 0
+      librosPrestados: []
     },
     {
       id: 4,
-      nombre: 'Cesar Guitierrez',
-      email: 'CesarGuitierrez@gmail.com',
-      librosPrestados: 5
+      nombre: 'Cesar Gutierrez',
+      email: 'cesargutierrez@gmail.com',
+      librosPrestados: []
     }
   ];
-  let opcion = Number(
-    prompt(
-      `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
-    )
-  );
 
-  if (!Number.isFinite(opcion)) {
-    alert('Debe ingresar una opción valida!');
-    return;
-  }
+  let opcion;
 
-  switch (opcion) {
-    case 1:
-      mostrarLibros(libros);
-      break;
+  do {
+    opcion = Number(
+      prompt(
+        `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
+      )
+    );
 
-    case 2:
-      buscarLibro(libros);
-      break;
-
-    case 3:
-      registrarUsuario(usuarios);
-      break;
-
-    case 4:
-      prestarLibro(libros);
-      break;
-
-    case 5:
-      devolverLibro(libros);
-      break;
-
-    case 6:
-      mostrarLibrosDisponibles(libros);
-      break;
-
-    case 7:
-      mostrarLibrosPrestados(libros);
-      break;
-    case 8:
-      mostrarEstadisticas(libros);
-      break;
-
-    case 9:
+    if (!Number.isFinite(opcion)) {
+      alert('Debe ingresar una opción valida!');
       return;
+    }
 
-    default:
-      alert('Opcion no valida');
-      break;
-  }
+    switch (opcion) {
+      case 1:
+        mostrarLibros(libros);
+        break;
+
+      case 2:
+        buscarLibro(libros);
+        break;
+
+      case 3:
+        registrarUsuario(usuarios);
+        break;
+
+      case 4:
+        prestarLibro(libros, usuarios);
+        break;
+
+      case 5:
+        devolverLibro(libros);
+        break;
+
+      case 6:
+        mostrarLibrosDisponibles(libros);
+        break;
+
+      case 7:
+        mostrarLibrosPrestados(libros);
+        break;
+      case 8:
+        mostrarEstadisticas(libros);
+        break;
+
+      case 9:
+        alert('HA CERRADO LA APLICACIÓN EXITOSAMENTE!');
+        break;
+
+      default:
+        alert('Opcion no valida');
+        break;
+    }
+  } while (opcion !== 9);
 }
 
 main();
@@ -177,6 +183,18 @@ function mostrarLibros(libros) {
   console.log('MOSTRANDO LIBROS DISPONIBLES EN LA BIBLIOTECA');
 
   console.table(libros);
+
+  // let stringLibros = '';
+
+  // libros.forEach((libro) => {
+  //   stringLibros += `NOMBRE DEL LIBRO: ${libro.titulo}\n
+  //                     AUTOR DEL LIBRO: ${libro.autor}\n
+  //                     AÑO DE PUBLICACION: ${libro.anio}\n
+  //                     GENERO: ${libro.genero}\n
+  //                     DISPONIBILIDAD: ${libro.disponible ? 'Si está disponible' : 'No está disponible'} \n\n`;
+  // });
+
+  // prompt(stringLibros);
 }
 function buscarLibro(libros) {
   const titulo = prompt('Digite el nombre del libro que desea buscar:').toLowerCase();
@@ -216,7 +234,7 @@ function registrarUsuario(usuarios) {
     alert('El nombre del usuario no debe exceder los 50 caracteres');
     return;
   }
-  
+
   const email = prompt('Digite el correo electronico del usuario: ');
 
   const usuario = {
@@ -233,7 +251,52 @@ function registrarUsuario(usuarios) {
   console.log('USUARIOS REGISTRADOS: ');
   console.log(usuarios);
 }
-function prestarLibro(libros) {}
+function prestarLibro(libros, usuarios) {
+  const usuario = prompt('Digite el nombre del usuario que desea prestar el libro:');
+
+  if (!usuario) {
+    alert('Debe ingresar un nombre de usuario');
+    return;
+  }
+
+  if (usuario.trim() === '') {
+    alert('El nombre del usuario no puede estar vacío');
+    return;
+  }
+
+  if (usuario.length < 3) {
+    alert('El nombre del usuario debe tener al menos 3 caracteres');
+    return;
+  }
+
+  if (usuario.length > 50) {
+    alert('El nombre del usuario no debe exceder los 50 caracteres');
+    return;
+  }
+
+  const usuarioEncontrado = usuarios.find(function (u) {
+    return usuario === u.nombre.toLowerCase();
+  });
+
+  if (!usuarioEncontrado) {
+    console.log(`El usuario llamado ${usuario} no se encuentra registrado`);
+    return;
+  }
+
+  const titulo = prompt('Digite el nombre del libro que desea buscar:').toLowerCase();
+
+  const libroEncontrado = libros.find(function (libro) {
+    return titulo === libro.titulo.toLowerCase();
+  });
+
+  if (!libroEncontrado) {
+    console.log(`El libro llamado ${titulo} no se encuentra disponible`);
+    return;
+  }
+
+  usuarioEncontrado.librosPrestados.push(libroEncontrado.titulo);
+  libroEncontrado.disponible = false;
+}
 function devolverLibro(libros) {}
 function mostrarLibrosDisponibles(libros) {}
 function mostrarLibrosPrestados(libros) {}
