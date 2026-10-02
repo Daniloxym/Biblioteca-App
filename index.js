@@ -202,6 +202,11 @@ function registrarUsuario(usuarios) {
     return;
   }
 
+  if (nombre.trim() === '') {
+    alert('El nombre del usuario no puede estar vacío');
+    return;
+  }
+
   if (nombre.length < 3) {
     alert('El nombre del usuario debe tener al menos 3 caracteres');
     return;
@@ -211,7 +216,7 @@ function registrarUsuario(usuarios) {
     alert('El nombre del usuario no debe exceder los 50 caracteres');
     return;
   }
-
+  
   const email = prompt('Digite el correo electronico del usuario: ');
 
   const usuario = {
