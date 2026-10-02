@@ -252,34 +252,34 @@ function registrarUsuario(usuarios) {
   console.log(usuarios);
 }
 function prestarLibro(libros, usuarios) {
-  const usuario = prompt('Digite el nombre del usuario que desea prestar el libro:');
+  const nombreUsuario = prompt('Digite el nombre del usuario que desea prestar el libro:');
 
-  if (!usuario) {
+  if (!nombreUsuario) {
     alert('Debe ingresar un nombre de usuario');
     return;
   }
 
-  if (usuario.trim() === '') {
+  if (nombreUsuario.trim() === '') {
     alert('El nombre del usuario no puede estar vacío');
     return;
   }
 
-  if (usuario.length < 3) {
+  if (nombreUsuario.length < 3) {
     alert('El nombre del usuario debe tener al menos 3 caracteres');
     return;
   }
 
-  if (usuario.length > 50) {
+  if (nombreUsuario.length > 50) {
     alert('El nombre del usuario no debe exceder los 50 caracteres');
     return;
   }
 
-  const usuarioEncontrado = usuarios.find(function (u) {
-    return usuario === u.nombre.toLowerCase();
+  const usuarioEncontrado = usuarios.find(function (usuario) {
+    return nombreUsuario.toLowerCase() === usuario.nombre.toLowerCase();
   });
 
   if (!usuarioEncontrado) {
-    console.log(`El usuario llamado ${usuario} no se encuentra registrado`);
+    console.log(`El usuario llamado ${nombreUsuario} no se encuentra registrado`);
     return;
   }
 
