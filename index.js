@@ -182,19 +182,19 @@ main();
 function mostrarLibros(libros) {
   console.log('MOSTRANDO LIBROS DISPONIBLES EN LA BIBLIOTECA');
 
-  console.table(libros);
+  // alert(JSON.stringify(libros));
 
-  // let stringLibros = '';
+  let stringLibros = '';
 
-  // libros.forEach((libro) => {
-  //   stringLibros += `NOMBRE DEL LIBRO: ${libro.titulo}\n
-  //                     AUTOR DEL LIBRO: ${libro.autor}\n
-  //                     AÑO DE PUBLICACION: ${libro.anio}\n
-  //                     GENERO: ${libro.genero}\n
-  //                     DISPONIBILIDAD: ${libro.disponible ? 'Si está disponible' : 'No está disponible'} \n\n`;
-  // });
+  libros.forEach((libro) => {
+    stringLibros += `\tNOMBRE DEL LIBRO: ${libro.titulo}
+                      \tAUTOR DEL LIBRO: ${libro.autor}
+                      \tAÑO DE PUBLICACION: ${libro.anio}
+                      \tGENERO: ${libro.genero}
+                      \tDISPONIBILIDAD: ${libro.disponible ? 'Sí está disponible' : 'No está disponible'}\n\n`;
+  });
 
-  // prompt(stringLibros);
+  console.log(stringLibros);
 }
 function buscarLibro(libros) {
   const titulo = prompt('Digite el nombre del libro que desea buscar:').toLowerCase();
@@ -254,6 +254,7 @@ function registrarUsuario(usuarios) {
 function prestarLibro(libros, usuarios) {
   const nombreUsuario = prompt('Digite el nombre del usuario que desea prestar el libro:');
 
+  // Validaciones del nombre del usuario
   if (!nombreUsuario) {
     alert('Debe ingresar un nombre de usuario');
     return;
@@ -286,7 +287,7 @@ function prestarLibro(libros, usuarios) {
   const titulo = prompt('Digite el nombre del libro que desea buscar:').toLowerCase();
 
   const libroEncontrado = libros.find(function (libro) {
-    return titulo === libro.titulo.toLowerCase();
+    return titulo.toLowerCase() === libro.titulo.toLowerCase();
   });
 
   if (!libroEncontrado) {
