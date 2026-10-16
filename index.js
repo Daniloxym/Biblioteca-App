@@ -14,7 +14,7 @@ function main() {
       autor: 'Gabriel García Márquez',
       anio: 1967,
       genero: 'Novela',
-      disponible: true
+      disponible: false
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ function main() {
       autor: 'Federico García Lorca',
       anio: 1936,
       genero: 'Teatro',
-      disponible: true
+      disponible: false
     },
     {
       id: 6,
@@ -63,7 +63,7 @@ function main() {
       autor: 'Julio Cortázar',
       anio: 1963,
       genero: 'Novela',
-      disponible: true
+      disponible: false
     },
     {
       id: 9,
@@ -87,7 +87,7 @@ function main() {
       autor: 'Juan Oscar',
       anio: 1933,
       genero: 'Ficcion',
-      disponible: true
+      disponible: false
     }
   ];
 
@@ -120,59 +120,57 @@ function main() {
 
   let opcion;
 
-  do {
-    opcion = Number(
-      prompt(
-        `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
-      )
-    );
+  opcion = Number(
+    prompt(
+      `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
+    )
+  );
 
-    if (!Number.isFinite(opcion)) {
-      alert('Debe ingresar una opción valida!');
-      return;
-    }
+  if (!Number.isFinite(opcion)) {
+    alert('Debe ingresar una opción valida!');
+    return;
+  }
 
-    switch (opcion) {
-      case 1:
-        mostrarLibros(libros);
-        break;
+  switch (opcion) {
+    case 1:
+      mostrarLibros(libros);
+      break;
 
-      case 2:
-        buscarLibro(libros);
-        break;
+    case 2:
+      buscarLibro(libros);
+      break;
 
-      case 3:
-        registrarUsuario(usuarios);
-        break;
+    case 3:
+      registrarUsuario(usuarios);
+      break;
 
-      case 4:
-        prestarLibro(libros, usuarios);
-        break;
+    case 4:
+      prestarLibro(libros, usuarios);
+      break;
 
-      case 5:
-        devolverLibro(libros);
-        break;
+    case 5:
+      devolverLibro(libros);
+      break;
 
-      case 6:
-        mostrarLibrosDisponibles(libros);
-        break;
+    case 6:
+      mostrarLibrosDisponibles(libros);
+      break;
 
-      case 7:
-        mostrarLibrosPrestados(libros);
-        break;
-      case 8:
-        mostrarEstadisticas(libros);
-        break;
+    case 7:
+      mostrarLibrosPrestados(libros);
+      break;
+    case 8:
+      mostrarEstadisticas(libros);
+      break;
 
-      case 9:
-        alert('HA CERRADO LA APLICACIÓN EXITOSAMENTE!');
-        break;
+    case 9:
+      alert('HA CERRADO LA APLICACIÓN EXITOSAMENTE!');
+      break;
 
-      default:
-        alert('Opcion no valida');
-        break;
-    }
-  } while (opcion !== 9);
+    default:
+      alert('Opcion no valida');
+      break;
+  }
 }
 
 main();
@@ -299,6 +297,13 @@ function prestarLibro(libros, usuarios) {
   libroEncontrado.disponible = false;
 }
 function devolverLibro(libros) {}
-function mostrarLibrosDisponibles(libros) {}
+function mostrarLibrosDisponibles(libros) {
+  const librosDisponibles = libros.filter(function (libro) {
+    return libro.disponible;
+  });
+
+  console.log('LIBROS DISPONIBLES: ');
+  console.table(librosDisponibles);
+}
 function mostrarLibrosPrestados(libros) {}
 function mostrarEstadisticas(libros) {}
