@@ -118,13 +118,13 @@ function main() {
     }
   ];
 
-  let opcion;
+  // let opcion;
 
-  opcion = Number(
-    prompt(
-      `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
-    )
-  );
+  // opcion = Number(
+  //   prompt(
+  //     `===== BIBLIOTECA =====\n1. Mostrar libros\n2. Buscar libro\n3. Registrar usuario\n4. Prestar libro\n5. Devolver libro\n6. Mostrar libros disponibles\n7. Mostrar libros prestados\n8. Estadísticas\n9. Salir`
+  //   )
+  // );
 
   if (!Number.isFinite(opcion)) {
     alert('Debe ingresar una opción valida!');
