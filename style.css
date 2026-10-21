@@ -32,7 +32,7 @@ body {
   margin: 0.5rem 0;
 }
 
-.sidebar-menu li button {
+.btn-option {
   width: 100%;
   padding: 0.5rem;
   background-color: #555;
@@ -41,7 +41,7 @@ body {
   cursor: pointer;
 }
 
-.sidebar-menu li button:hover {
+.btn-option:hover {
   background-color: #666;
 }
 .content {

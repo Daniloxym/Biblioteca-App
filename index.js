@@ -126,51 +126,60 @@ function main() {
   //   )
   // );
 
-  if (!Number.isFinite(opcion)) {
-    alert('Debe ingresar una opción valida!');
-    return;
-  }
+  const $sidebarMenu = document.querySelector('.sidebar-menu');
 
-  switch (opcion) {
-    case 1:
-      mostrarLibros(libros);
-      break;
+  $sidebarMenu.addEventListener('click', (event) => {
+    const $btn = event.target;
+    if (!$btn.classList.contains('btn-option')) return;
 
-    case 2:
-      buscarLibro(libros);
-      break;
+    const opcion = Number($btn.dataset.opcion);
 
-    case 3:
-      registrarUsuario(usuarios);
-      break;
+    if (!Number.isFinite(opcion)) {
+      alert('Debe ingresar una opción valida!');
+      return;
+    }
 
-    case 4:
-      prestarLibro(libros, usuarios);
-      break;
+    switch (opcion) {
+      case 1:
+        mostrarLibros(libros);
+        break;
 
-    case 5:
-      devolverLibro(libros);
-      break;
+      case 2:
+        buscarLibro(libros);
+        break;
 
-    case 6:
-      mostrarLibrosDisponibles(libros);
-      break;
+      case 3:
+        registrarUsuario(usuarios);
+        break;
 
-    case 7:
-      mostrarLibrosPrestados(libros);
-      break;
-    case 8:
-      mostrarEstadisticas(libros);
-      break;
+      case 4:
+        prestarLibro(libros, usuarios);
+        break;
 
-    case 9:
-      alert('HA CERRADO LA APLICACIÓN EXITOSAMENTE!');
-      break;
+      case 5:
+        devolverLibro(libros);
+        break;
 
-    default:
-      alert('Opcion no valida');
-      break;
-  }
+      case 6:
+        mostrarLibrosDisponibles(libros);
+        break;
+
+      case 7:
+        mostrarLibrosPrestados(libros);
+        break;
+      case 8:
+        mostrarEstadisticas(libros);
+        break;
+
+      case 9:
+        alert('HA CERRADO LA APLICACIÓN EXITOSAMENTE!');
+        break;
+
+      default:
+        alert('Opcion no valida');
+        break;
+    }
+  });
 }
 
 main();
